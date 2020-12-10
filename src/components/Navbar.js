@@ -1,39 +1,43 @@
 import React from 'react';
-import { Container } from 'react-bootstrap';
-import { Navbar } from 'react-bootstrap';
-import { Nav } from 'react-bootstrap';
-import { Button } from 'react-bootstrap';
-import { Form } from 'react-bootstrap';
-import { FormControl } from 'react-bootstrap';
-
+//Components
+import CartWidget from './CartWidget'
+// Bootstrap
+import { Container, Navbar, Nav, Button, Form, FormControl } from 'react-bootstrap'
+// Resources
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch } from '@fortawesome/free-solid-svg-icons'
-import logo from './resources/logo.png';
+import logo from '../resources/logo.png';
 
-function nav() {
+const navBar = ({companyName}) => {
+
     return (
         <>
-            <Navbar collapseOnSelect expand="lg" bg="light" variant="light">
+            <Navbar collapseOnSelect expand="lg" bg="none">
                 <Container>
                     <Navbar.Brand href="#home">
                     <img
                         src={logo}
-                        width="60"
-                        height="50"
+                        width="40"
+                        height="60"
                         className="d-inline-block align-top"
                         alt="React Bootstrap logo"
                     />
                     </Navbar.Brand>
+                    <Navbar.Brand href="#home">
+                        <h3 className="company-name text-uppercase">{companyName}</h3>
+                    </Navbar.Brand>
                     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                     <Navbar.Collapse id="responsive-navbar-nav">
                         <Nav className="mr-auto">
-                        <Nav.Link href="#mens">Mens</Nav.Link>
+                        <Nav.Link href="#home">Home</Nav.Link>
                         <Nav.Link href="#womens">Womens</Nav.Link>
+                        <Nav.Link href="#mens">Mens</Nav.Link>
                         <Nav.Link href="#accesories">Accessories</Nav.Link>
                         </Nav>
                         <Form inline>
                         <FormControl type="text" placeholder="Search" className="mr-sm-2" />
-                        <Button className="search-button" variant="light"><FontAwesomeIcon icon={faSearch}/></Button>
+                        <Button id="search-button" variant="lite"><FontAwesomeIcon icon={faSearch}/></Button>
+                        <CartWidget></CartWidget>
                         </Form>
                     </Navbar.Collapse>
                 </Container>
@@ -42,4 +46,4 @@ function nav() {
     )   
 }
 
-export default nav;
+export default navBar;

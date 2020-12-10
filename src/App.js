@@ -1,9 +1,15 @@
-import './App.css';
-import Navbar from './Navbar';
+import './css/App.css'
+import Header from './components/Header'
+import Home from './components/Home'
+import Footer from './components/Footer'
 
-function App() {
+const App = () => {
   return (
-    <Navbar></Navbar>
+    <>
+    <Header></Header>
+    <Home></Home>
+    <Footer></Footer>
+    </>
   );
 }
 
