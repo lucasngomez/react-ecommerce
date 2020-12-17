@@ -12,7 +12,7 @@ const navBar = ({companyName}) => {
 
     return (
         <>
-            <Navbar collapseOnSelect expand="lg" bg="none">
+            <Navbar collapseOnSelect expand="lg" bg="none" id="back-red">
                 <Container>
                     <Navbar.Brand href="#home">
                     <img
