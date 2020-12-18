@@ -10,10 +10,6 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-#back-red {
-  /* background-color:#043850; */
-}
-
 .company-name {
   color: black;
   font-family: 'Poppins', sans-serif;

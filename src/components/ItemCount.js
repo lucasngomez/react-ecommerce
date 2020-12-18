@@ -1,18 +1,18 @@
 import React from "react"
 import { Container, Row, Button } from 'react-bootstrap'
 
-const ItemCount = ( { stock }) => {
+const ItemCount = ( { stock, initial }) => {
 
-    const [Count, setCount] = React.useState(1);
+    const [Count, setCount] = React.useState(initial);
   
-    let upCount = () =>{
-        if(Count < stock){
+    let upCount = () => {
+        if(Count < stock) {
             setCount(Count + 1)
         }
     }
 
-    let downCount = () =>{
-        if(Count > 0){
+    let downCount = () => {
+        if(Count > 0) {
             setCount(Count - 1)
         }
     }
