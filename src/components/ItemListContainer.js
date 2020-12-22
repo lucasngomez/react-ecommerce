@@ -12,7 +12,9 @@ const ItemListContainer = ({ title, text }) => {
         <Container className="mt-3">
             <h3 className="text-center">{title}</h3>
             <p className="text-center font-weight-light">{text}</p>
-            <Row className="d-flex justify-content-center"><ItemList/></Row>
+            <Row className="d-flex justify-content-center">
+                <ItemList/>
+            </Row>
             <ItemCount
                 stock = {STOCK}
                 initial = {INITIAL}
