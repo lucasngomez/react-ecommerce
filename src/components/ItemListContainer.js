@@ -1,6 +1,8 @@
 import React from 'react'
+
 import ItemCount from './ItemCount'
 import ItemList from './ItemList'
+
 import { Container, Row } from 'react-bootstrap'
 
 const ItemListContainer = ({ title, text }) => {

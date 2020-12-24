@@ -2,6 +2,9 @@ import React from 'react'
 
 import Slider from './Slider'
 import ItemListContainer from './ItemListContainer'
+import ItemDetailContainer from './ItemDetailContainer'
+
+import { Container, Row } from 'react-bootstrap'
 
 const Home = () => {
 
@@ -15,6 +18,11 @@ const Home = () => {
                 title = {sectionTitle}
                 text = {textContent}
             />
+            <Container>
+                <Row className="d-flex justify-content-center">
+                    <ItemDetailContainer />
+                </Row>
+            </Container>
         </>
     )
 }

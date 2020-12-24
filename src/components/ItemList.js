@@ -32,7 +32,6 @@ const ItemList = () => {
         const injectProducts = () => {
             setProducts(productList)
         }
-        
 
         useEffect(() => {
             setTimeout(function(){ 
