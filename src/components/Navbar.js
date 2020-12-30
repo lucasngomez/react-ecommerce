@@ -8,36 +8,38 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch } from '@fortawesome/free-solid-svg-icons'
 import logo from '../resources/logo.png';
 
+import { Link } from 'react-router-dom'
+
 const navBar = ({companyName}) => {
 
     return (
         <>
             <Navbar collapseOnSelect expand="lg" bg="none" id="back-red">
                 <Container>
-                    <Navbar.Brand href="#home">
-                    <img
+                    <Navbar.Brand>
+                    <Link to={"/"}>
+                        <img
                         src={logo}
                         width="40"
                         height="60"
                         className="d-inline-block align-top"
                         alt="React Bootstrap logo"
-                    />
+                        />
+                    </Link>
                     </Navbar.Brand>
-                    <Navbar.Brand href="#home">
-                        <h3 className="company-name text-uppercase">{companyName}</h3>
+                    <Navbar.Brand>
+                        <Link to={"/"}><h3 className="company-name text-uppercase">{companyName}</h3></Link>
                     </Navbar.Brand>
                     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                     <Navbar.Collapse id="responsive-navbar-nav">
                         <Nav className="mr-auto">
-                        <Nav.Link href="#home">Home</Nav.Link>
-                        <Nav.Link href="#womens">Womens</Nav.Link>
-                        <Nav.Link href="#mens">Mens</Nav.Link>
-                        <Nav.Link href="#accesories">Accessories</Nav.Link>
+                            <Link to={"/"}>Home</Link>
+                            <Link to={"/category/man"}>Man</Link>
                         </Nav>
                         <Form inline>
-                        <FormControl type="text" placeholder="Search" className="mr-sm-2" />
-                        <Button id="search-button" variant="lite"><FontAwesomeIcon icon={faSearch}/></Button>
-                        <CartWidget></CartWidget>
+                            <FormControl type="text" placeholder="Search" className="mr-sm-2" />
+                            <Button id="search-button" variant="lite"><FontAwesomeIcon icon={faSearch}/></Button>
+                            <CartWidget></CartWidget>
                         </Form>
                     </Navbar.Collapse>
                 </Container>

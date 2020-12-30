@@ -1,21 +1,40 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 
 import ItemCount from './ItemCount'
-import ItemList from './ItemList'
+import ItemDetail from './ItemDetail'
 
 import { Container, Row } from 'react-bootstrap'
 
-const ItemListContainer = ({ title, text }) => {
+const ItemListContainer = () => {
 
     const STOCK = 15
     const INITIAL = 1
 
+    const [ items, setItems ] = useState([])   
+
+    useEffect(() => {
+        fetch("https://api.mercadolibre.com/sites/MLA/search?nickname=MOOV-ML")
+        .then((res) => {
+            return res.json()
+        })
+        .then((res) => {
+            let products = res.results.slice(0,9)
+            setItems(products)
+        })
+    }, [])
+
     return (
         <Container className="mt-3">
-            <h3 className="text-center">{title}</h3>
-            <p className="text-center font-weight-light">{text}</p>
             <Row className="d-flex justify-content-center">
-                <ItemList/>
+                { items.length === 0 ? <p>Empty!</p> : null }
+                { items.map((item) => {
+                    return <ItemDetail 
+                    id = {item.id}
+                    title = {item.title.split('-')[0]}
+                    price = {item.price}
+                    thumbnail = {item.thumbnail}
+                    />
+                })}
             </Row>
             <ItemCount
                 stock = {STOCK}
