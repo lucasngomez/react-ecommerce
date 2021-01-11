@@ -1,9 +1,9 @@
 import React , { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
-import ItemList from './ItemList'
-import { Row, Container, CardGroup } from 'react-bootstrap'
+import ItemDetail from './ItemDetail'
+import Loader from './Loader'
 
-const products = [
+const details = [
     {
         category : "1",
         id : "MLA832761839",
@@ -34,26 +34,23 @@ const products = [
     }
 ]
 
-const ItemListContainer = () => {
+const ItemDetailContainer = () => {
 
-    const [ items, setItems ] = useState([])
-    const { id } = useParams()
+    const [item,setItem] = useState()
+    const {id} = useParams()
 
     useEffect(()=>{
-        
+
         let request = new Promise((res,rej)=>{
             setTimeout(()=>{
-                res(products)
-                console.log(res)
+                res(details)
             },2000)
         })
 
         request
         .then(res=>{
             if(id){
-                setItems(res.filter(item=>item.category===id))
-            }else{
-                setItems(res)
+                setItem(res.filter(item=>item.id==id)[0])
             }
         })
         .catch(err=>{
@@ -63,12 +60,12 @@ const ItemListContainer = () => {
     },[id])
 
     return (
-        <>
-            <Row className="d-flex justify-content-center">
-                    <ItemList items={items}/>
-            </Row>
-        </>
+        <div>
+            {item
+            ? <ItemDetail item={item}/> 
+            : <Loader/>}
+        </div>
     )
 }
 
-export default ItemListContainer
+export default ItemDetailContainer

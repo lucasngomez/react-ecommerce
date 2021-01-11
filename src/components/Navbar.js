@@ -1,4 +1,6 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
+
 //Components
 import CartWidget from './CartWidget'
 // Bootstrap
@@ -10,7 +12,7 @@ import logo from '../resources/logo.png';
 
 import { Link } from 'react-router-dom'
 
-const navBar = ({companyName}) => {
+const navBar = ({ companyName }) => {
 
     return (
         <>
@@ -34,7 +36,8 @@ const navBar = ({companyName}) => {
                     <Navbar.Collapse id="responsive-navbar-nav">
                         <Nav className="mr-auto">
                             <Link to={"/"}>Home</Link>
-                            <Link to={"/category/man"}>Man</Link>
+                            <NavLink to="/category/1" className="black-text">Men</NavLink>
+                            <NavLink to="/category/2" className="black-text">Women</NavLink>
                         </Nav>
                         <Form inline>
                             <FormControl type="text" placeholder="Search" className="mr-sm-2" />

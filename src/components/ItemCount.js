@@ -1,24 +1,24 @@
 import React from "react"
 import { Container, Row, Button } from 'react-bootstrap'
 
-const ItemCount = ( { stock, initial }) => {
+const ItemCount = ( { stock, initial, buttonEndBuy }) => {
 
-    const [Count, setCount] = React.useState(initial);
-  
+    const [Count, setCount] = React.useState(initial)
+
     let upCount = () => {
         if(Count < stock) {
             setCount(Count + 1)
+            console.log("after", Count + 1)
+            buttonEndBuy()
         }
     }
 
     let downCount = () => {
         if(Count > 0) {
             setCount(Count - 1)
+            console.log("after", Count - 1)
+            buttonEndBuy()
         }
-    }
-
-    if (Count === 0) {
-        setCount (Count + 1)
     }
 
     return (

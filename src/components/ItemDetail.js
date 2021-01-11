@@ -1,30 +1,28 @@
-import React from 'react'
-import { Card, Button } from 'react-bootstrap'
-import ItemCount from './ItemCount'
+import React, { useState } from 'react'
+import ItemCount from "./ItemCount"
+import { Row, Container, Button } from 'react-bootstrap'
 
-import { Link } from 'react-router-dom'
+const ItemDetail = ({item}) => {
 
-const ItemDetail = ({ id, title, price, thumbnail }) => {
+    const [endBuy, setEndButton] = React.useState(false)
 
-    const Stock = 10
-    const Initial = 0
+    const buttonEndBuy = e => {
+        setEndButton(true)
+    }
 
     return (
         <>
-            <Card className="text-center m-2" style={{ width: '18rem' }}>
-                <Card.Img variant="top" src={thumbnail} />
-                <Card.Body>
-                    <Card.Title><Link to={"/item/"+id} key={id}>{title}</Link></Card.Title>
-                    <Card.Text>
-                        <p>price: {price}</p>
-                    </Card.Text>
-                    <ItemCount
-                        stock = {Stock}
-                        initial = {Initial}
-                    />
-                    <Button variant="primary">Add to cart</Button>
-                </Card.Body>
-            </Card>
+        <Row>
+            <Container className="col-md-12">
+                <h3>{item.title} - ${item.price}</h3>
+                <img src={item.pictureUrl} alt={item.title}/>
+                <p>{item.description}</p>
+            </Container>
+        </Row>
+        <Row className="justify-content-center">
+                <ItemCount stock={10} initial={1} buttonEndBuy={buttonEndBuy}/>
+                {endBuy ? <Button className="btn btn-primary">Finish Buy</Button> : ""}
+        </Row>
         </>
     )
 }
