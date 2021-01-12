@@ -1,35 +1,43 @@
 import React from "react"
 import { Container, Row, Button } from 'react-bootstrap'
 
-const ItemCount = ( { stock, initial, buttonEndBuy }) => {
+const ItemCount = ( { 
+    className,
+    stockQty, 
+    onAdd, 
+    itemAdded, 
+    setItemAdded,
+    buttonEndBuy }) => {
 
-    const [Count, setCount] = React.useState(initial)
+    const decrease = () => {
+        if(itemAdded <= 1) {
+        }else {
+            setItemAdded(itemAdded - 1);
+        }  
+    };
 
-    let upCount = () => {
-        if(Count < stock) {
-            setCount(Count + 1)
-            console.log("after", Count + 1)
-            buttonEndBuy()
+    const increase = () => {
+        if(itemAdded >= stockQty) {
+        } else {
+            setItemAdded(itemAdded + 1);
         }
-    }
+    };
 
-    let downCount = () => {
-        if(Count > 0) {
-            setCount(Count - 1)
-            console.log("after", Count - 1)
-            buttonEndBuy()
-        }
-    }
 
     return (
         <>
+        {
             <Container className="container-fluid">
-                <Row className="justify-content-center">
-                    <Button  variant="light" onClick={downCount}>-</Button>
-                        <p className=" m-3">{Count}</p>
-                    <Button variant="light" onClick={upCount}>+</Button>
-                </Row>
+            <Row className="justify-content-center">
+                <Button  variant="light" onClick={decrease}>-</Button>
+                    <p className=" m-3">{itemAdded}</p>
+                <Button variant="light" onClick={increase}>+</Button>
+            </Row>
+            <Row className="justify-content-center"> 
+                <Button variant="light" onClick={onAdd}>Añadir al carro</Button>   
+            </Row>
             </Container>
+        }
         </>
     )
 }

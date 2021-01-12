@@ -1,6 +1,9 @@
-import React , { useEffect, useState } from 'react'
+import React , { useEffect, useState, useContext } from 'react'
 import { useParams } from 'react-router-dom'
 import ItemDetail from './ItemDetail'
+
+import {context} from './Context'
+
 import Loader from './Loader'
 
 const details = [
@@ -59,10 +62,36 @@ const ItemDetailContainer = () => {
 
     },[id])
 
+    const [qty, setQty] = useState(0);
+
+    const [itemAdded, setItemAdded] = useState(1);
+
+    const idUrlParam = useParams();
+
+    const {addItem} = useContext(context);
+
+    const onAdd = () => {
+        setQty(itemAdded);
+    };
+
+    const setItemsToCart = () => {
+        addItem(item, qty)
+    }
+
     return (
         <div>
             {item
-            ? <ItemDetail item={item}/> 
+            ? <ItemDetail 
+                item={item}
+                id={idUrlParam.itemId} 
+                qty={qty}
+                setQty={setQty}
+                itemAdded={itemAdded}
+                setItemAdded={setItemAdded}
+                onAdd={onAdd}
+                setItemsToCart={setItemsToCart}
+                addItem={addItem}
+                /> 
             : <Loader/>}
         </div>
     )

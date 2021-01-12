@@ -1,14 +1,20 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
+import { Link } from 'react-router-dom';
 import ItemCount from "./ItemCount"
 import { Row, Container, Button } from 'react-bootstrap'
 
-const ItemDetail = ({item}) => {
+const ItemDetail = ({item, id, qty, itemAdded, onAdd, setItemsToCart, setItemAdded, addItem}) => {
 
     const [endBuy, setEndButton] = React.useState(false)
 
     const buttonEndBuy = e => {
         setEndButton(true)
     }
+
+    function addProduct(evt) {
+        console.log(item)
+    }
+
 
     return (
         <>
@@ -20,8 +26,20 @@ const ItemDetail = ({item}) => {
             </Container>
         </Row>
         <Row className="justify-content-center">
-                <ItemCount stock={10} initial={1} buttonEndBuy={buttonEndBuy}/>
-                {endBuy ? <Button className="btn btn-primary">Finish Buy</Button> : ""}
+                    {qty ?
+                        <Link to="/cart">
+                            <Button variant="light" onClick={setItemsToCart}>Checkout</Button>
+                        </Link>   
+                        :
+                        <ItemCount 
+                            className='item-detail-counter' 
+                            stockQty={10} 
+                            onAdd={onAdd} 
+                            itemAdded={itemAdded} 
+                            setItemAdded={setItemAdded}
+                            addItem={addItem}
+                        /> 
+                    }
         </Row>
         </>
     )
