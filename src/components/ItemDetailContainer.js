@@ -68,10 +68,11 @@ const ItemDetailContainer = () => {
 
     const idUrlParam = useParams();
 
-    const {addItem} = useContext(context);
+    const {cart, addItem} = useContext(context);
 
     const onAdd = () => {
         setQty(itemAdded);
+        addItem(id, itemAdded)
     };
 
     const setItemsToCart = () => {
@@ -91,6 +92,7 @@ const ItemDetailContainer = () => {
                 onAdd={onAdd}
                 setItemsToCart={setItemsToCart}
                 addItem={addItem}
+                cart={cart}
                 /> 
             : <Loader/>}
         </div>

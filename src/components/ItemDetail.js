@@ -28,7 +28,7 @@ const ItemDetail = ({item, id, qty, itemAdded, onAdd, setItemsToCart, setItemAdd
         <Row className="justify-content-center">
                     {qty ?
                         <Link to="/cart">
-                            <Button variant="light" onClick={setItemsToCart}>Checkout</Button>
+                            <Link to="/cart"><Button className="checkout-btn">Finalizar compra</Button></Link>  
                         </Link>   
                         :
                         <ItemCount 

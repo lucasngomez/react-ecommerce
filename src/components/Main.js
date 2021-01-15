@@ -4,6 +4,8 @@ import Slider from './Slider'
 import ItemListContainer from './ItemListContainer'
 import ItemDetailContainer from './ItemDetailContainer'
 import CartContext from './CartContext'
+import Cart from './Cart';
+
 
 import { Provider } from "./Context"
 
@@ -33,6 +35,9 @@ const Main = () => {
                     <Route path="/item/:id">
                         <ItemDetailContainer/>
                     </Route>
+
+                    <Route path="/cart" component={Cart}/>
+
 
                 </Switch>
                 </Container>
